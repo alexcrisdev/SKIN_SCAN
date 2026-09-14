@@ -28,10 +28,15 @@ export function BackgroundAudio({ src }: BackgroundAudioProps) {
     }
   }, [muted]);
 
+  const handleToggle = () => {
+    setMuted((m) => !m);
+    audioRef.current?.play().catch(() => {});
+  };
+
   return (
     <button
       type="button"
-      onClick={() => setMuted((m) => !m)}
+      onClick={handleToggle}
       aria-label={muted ? "Activar sonido de fondo" : "Silenciar sonido de fondo"}
       className="fixed bottom-5 right-5 z-50 grid size-12 place-items-center rounded-full border border-border bg-card text-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-muted"
     >

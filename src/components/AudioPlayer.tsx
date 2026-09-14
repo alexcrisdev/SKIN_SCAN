@@ -32,20 +32,24 @@ export function AudioPlayer({ src }: AudioPlayerProps) {
     }
   }, [muted]);
 
-  useEffect(() => {
+  const handleTogglePlay = () => {
     if (!audioRef.current) return;
     if (playing) {
-      audioRef.current.play().catch(() => setPlaying(false));
-    } else {
       audioRef.current.pause();
+      setPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
     }
-  }, [playing]);
+  };
 
   return (
     <div className="inline-flex items-center gap-3 rounded-full border border-border bg-card px-4 py-2 shadow-[var(--shadow-card)]">
       <button
         type="button"
-        onClick={() => setPlaying((p) => !p)}
+        onClick={handleTogglePlay}
         aria-label={playing ? "Pausar" : "Escuchar"}
         className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
       >
