@@ -27,7 +27,6 @@ import {
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
-import audioAsset from "@/assets/skinscan-audio.mpeg.asset.json";
 import teamAudio from "@/assets/equipo-audio.mp3";
 import teamPhoto from "@/assets/equipo-skinscan.jpg";
 import lesionSample from "@/assets/lesion-sample.jpg";
@@ -377,7 +376,7 @@ function SkinScanPage() {
               </div>
             </div>
             <div className="mt-10 flex justify-center">
-              <AudioPlayer src={audioAsset.url} />
+              <AudioPlayer src={teamAudio} />
             </div>
           </div>
         </section>
